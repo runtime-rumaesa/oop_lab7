@@ -1,0 +1,71 @@
+package lab7;
+
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class Department {
+    String departmentName;
+    String location;
+
+    Department(String departmentName, String location) {
+        this.departmentName = departmentName;
+        this.location = location;
+    }
+
+    void showDepartmentDetails() {
+        System.out.println("Department: " + departmentName + ", Location: " + location);
+    }
+}
+
+class Doctor extends Person {
+    String specialization;
+    int doctorID;
+    Department department;
+
+    Doctor(String name, int age, String specialization, int doctorID, String deptName, String location) {
+        super(name, age);
+        this.specialization = specialization;
+        this.doctorID = doctorID;
+        this.department = new Department(deptName, location);
+    }
+
+    void showDoctorDetails() {
+        System.out.println("Doctor ID: " + doctorID + ", Name: " + name + ", Specialization: " + specialization);
+        department.showDepartmentDetails();
+    }
+}
+
+class Patient extends Person {
+    int patientID;
+    String disease;
+    Doctor doctor;
+
+    Patient(String name, int age, int patientID, String disease, Doctor doctor) {
+        super(name, age);
+        this.patientID = patientID;
+        this.disease = disease;
+        this.doctor = doctor;
+    }
+
+    void showPatientDetails() {
+        System.out.println("Patient ID: " + patientID + ", Name: " + name + ", Disease: " + disease);
+        System.out.println("Treated by Dr. " + doctor.name);
+    }
+}
+
+public class task_7 {
+    public static void main(String[] args) {
+        Doctor doctor = new Doctor("Dr. Ali", 45, "Cardiology", 101, "Cardiology Dept", "Block A");
+        Patient patient = new Patient("Ahmed", 30, 221, "Heart Disease", doctor);
+
+        doctor.showDoctorDetails();
+        patient.showPatientDetails();
+    }
+}
