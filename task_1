@@ -1,0 +1,11 @@
+package lab6;
+
+public class implicit1 {
+    public static void main(String[] args) {
+        int num = 45;
+        double dNum = num;
+
+        System.out.println("Before: " + num);
+        System.out.println("After implicit casting: " + dNum);
+    }
+}
