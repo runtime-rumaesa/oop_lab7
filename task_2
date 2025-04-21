@@ -1,0 +1,11 @@
+package lab6;
+
+public class explicit2 {
+    public static void main(String[] args) {
+        double dNum = 18.65;
+        int num = (int)dNum;
+
+        System.out.println("Before: " + dNum);
+        System.out.println("After explicit casting: " + num);
+    }
+}
