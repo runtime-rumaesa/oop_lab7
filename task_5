@@ -1,0 +1,74 @@
+package lab6;
+
+public class Product {
+    protected double price;
+
+    Product(double p){
+        this.price = p;
+    }
+    public void showDetails(){
+        System.out.println("Price: " + price);
+    }
+}
+======================================================
+package lab6;
+
+public class Clothing extends Product{
+    String size;
+
+    Clothing(double p, String s){
+        super(p);
+        this.size = s;
+    }
+    public void showDetails(){
+        applyDiscount();
+        System.out.println("Size: " + size);
+        super.showDetails();
+    }
+    public void applyDiscount(){
+        super.price = super.price * 0.8;
+        System.out.println("Discounted price: " + super.price);
+    }
+
+}
+=============================================================
+package lab6;
+
+public class Electronics extends Product{
+    int warranty;
+
+    Electronics(int warranty, double p){
+        super(p);
+        this.warranty = warranty;
+    }
+    public void showDetails(){
+        System.out.println("Warranty: " + warranty);
+        super.showDetails();
+    }
+    public void applyWarranty(){
+        System.out.println("Warranty applied");
+    }
+}
+============================================================
+package lab6;
+
+public class task_5 {
+    public static void main(String[] args) {
+        Product p1 = new Clothing(7841.66, "Medium");
+        Product p2 = new Electronics(10, 25000);
+
+        //upcasting
+        p1.showDetails();
+        p2.showDetails();
+
+        //downcasting
+        if(p1 instanceof Clothing){
+            Clothing c1 = (Clothing) p1;
+            ((Clothing) p1).applyDiscount();
+        }
+        if(p2 instanceof Electronics){
+            Electronics e1 = (Electronics) p2;
+            ((Electronics) p2).applyWarranty();
+        }
+    }
+}
