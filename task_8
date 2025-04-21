@@ -1,0 +1,54 @@
+package lab7;
+
+final class SecureTransaction {
+    void processTransaction() {
+        System.out.println("Transaction Processed Securely");
+    }
+}
+
+class Bank {
+    final String BANK_NAME = "Secure Bank";
+    void showBankDetails() {
+        System.out.println("Bank Name: " + BANK_NAME);
+    }
+}
+
+class Account {
+    final int accountNumber;
+
+    Account(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    void showAccountDetails() {
+        System.out.println("Account Number: " + accountNumber);
+    }
+
+    final void calculateInterest() {
+        System.out.println("Interest Calculated");
+    }
+}
+
+class SavingsAccount extends Account {
+    SavingsAccount(int accountNumber) {
+        super(accountNumber);
+    }
+
+    void displaySavingsMessage() {
+        System.out.println("This is a Savings Account.");
+    }
+}
+
+public class task_8 {
+    public static void main(String[] args) {
+        Bank bank = new Bank();
+        bank.showBankDetails();
+
+        Account account = new Account(123456);
+        account.showAccountDetails();
+        account.calculateInterest();
+
+        SecureTransaction transaction = new SecureTransaction();
+        transaction.processTransaction();
+    }
+}
