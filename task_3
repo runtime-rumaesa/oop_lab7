@@ -1,0 +1,59 @@
+package lab6;
+
+public class Employee3 {
+    protected String employeeName;
+    protected int salary;
+
+    public void calculateSalary(){
+        System.out.println("Salary: " + salary);
+    }
+    public void display(){
+        System.out.println("Name : " + employeeName);
+    }
+    Employee3(String name, int s){
+        this.employeeName = name;
+        this.salary = s;
+    }
+}
+
+========================================================
+package lab6;
+
+public class PartTimeEmployee extends Employee3{
+    int hours;
+    public void calculateSalary(){
+        super.salary = super.salary*hours;
+        super.calculateSalary();
+    }
+    PartTimeEmployee(String name, int s, int h){
+        super(name, s);
+        this.hours = h;
+    }
+}
+=========================================================
+package lab6;
+
+public class FullTimeEmployee extends Employee3{
+
+    public void calculateSalary(){
+        super.salary = super.salary * 12;
+        super.calculateSalary();
+    }
+    FullTimeEmployee(String name, int s){
+        super(name, s);
+    }
+
+}
+===========================================================
+package lab6;
+
+public class task_3 {
+    public static void main(String[] args) {
+        Employee3 emp = new FullTimeEmployee("Ateeba", 45000);
+        Employee3 emp2 = new PartTimeEmployee("Ameera", 56000, 5);
+        emp.display();
+        emp.calculateSalary();
+        emp2.display();
+        emp2.calculateSalary();
+    }
+}
