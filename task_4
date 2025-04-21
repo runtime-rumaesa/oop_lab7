@@ -1,0 +1,64 @@
+package lab6;
+
+public class Delivery {
+    protected int hours = 20;
+    public void calculateDeliveryTime(){
+        System.out.println("Delivery time: " + hours + " hours");
+    }
+    Delivery(){
+
+    }
+}
+=========================================================
+package lab6;
+
+public class ExpressDelivery extends Delivery {
+    double weight;
+    public void calculateDeliveryTime() {
+        super.hours = super.hours - 5;
+        super.calculateDeliveryTime();
+    }
+    ExpressDelivery(double weight){
+        this.weight = weight;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+}
+===========================================================
+package lab6;
+
+public class StandardDelivery extends Delivery{
+    String destination;
+    public void calculateDeliveryTime() {
+        super.calculateDeliveryTime();
+    }
+    StandardDelivery(String des){
+        this.destination = des;
+    }
+    public String getDestination(){
+        return destination;
+    }
+}
+============================================================
+package lab6;
+
+public class task_4 {
+    public static void main(String[] args) {
+        Delivery dev = new ExpressDelivery(3.5);
+        Delivery dev2 = new StandardDelivery("Lahore");
+
+        dev.calculateDeliveryTime();
+        dev2.calculateDeliveryTime();
+
+        if(dev instanceof ExpressDelivery){
+            ExpressDelivery ed = (ExpressDelivery) dev;
+            System.out.println("Weight: " + ((ExpressDelivery) dev).getWeight());
+        }
+        if(dev2 instanceof StandardDelivery){
+            StandardDelivery SD = (StandardDelivery) dev2;
+            System.out.println("Destination: " + ((StandardDelivery) dev2).getDestination());
+        }
+    }
+}
