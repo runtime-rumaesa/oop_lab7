@@ -1,0 +1,53 @@
+class Vehicle {
+    String brand;
+    String model;
+    
+    Vehicle(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+    }
+    
+    void showDetails() {
+        System.out.println("Brand: " + brand + ", Model: " + model);
+    }
+}
+
+class Car extends Vehicle {
+    int numberOfSeats;
+    
+    Car(String brand, String model, int numberOfSeats) {
+        super(brand, model);
+        this.numberOfSeats = numberOfSeats;
+    }
+    
+    @Override
+    void showDetails() {
+        super.showDetails();
+        System.out.println("Number of Seats: " + numberOfSeats);
+    }
+}
+
+class Bike extends Vehicle {
+    int engineCapacity;
+    
+    Bike(String brand, String model, int engineCapacity) {
+        super(brand, model);
+        this.engineCapacity = engineCapacity;
+    }
+    
+    @Override
+    void showDetails() {
+        super.showDetails();
+        System.out.println("Engine Capacity: " + engineCapacity + "cc");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car("Toyota", "Corolla", 5);
+        Bike bike = new Bike("Honda", "CBR500R", 500);
+        
+        car.showDetails();
+        bike.showDetails();
+    }
+}
